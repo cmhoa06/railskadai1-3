@@ -1,8 +1,15 @@
 <h3>スケジュール一覧</h3>
 
+<% if flash[:success] %>
+    <p class="success"><%= flash[:success] %></p>
+<% end %>
+<% if flash[:alret] %>
+    <p class="alret"><%= flash[:alret] %></p>
+<% end %>
+
 <% if flash[:notice] %>
     <p class="notice"><%= flash[:notice] %></p>
-<% end %>
+ <% end %> 
 
 <table>
   <thead>
@@ -45,7 +52,7 @@
       </td>
 
       <td>
-        <%= task.updated_at.to_s(:datetime_jp)  %>
+        <%= task.updated_at.strftime("%Y年%m月%d日%H時%M分")  %>
       </td>
 
       <td>

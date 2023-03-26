@@ -10,9 +10,10 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         if @task.save
-            flash[:notice] = "新規登録しました"
+            flash[:success] = "新規登録しました"
             redirect_to :tasks
           else
+            flash.now[:alret] = "スケジュールを登録できませんでした"
             render :new
           end
     end
@@ -29,9 +30,10 @@ class TasksController < ApplicationController
         @task = Task.find(params[:id])
 
      if @task.update(task_params)
-        flash[:notice] = "スケジュール情報を更新しました"
+        flash[:success] = "スケジュール情報を更新しました"
         redirect_to tasks_path
      else
+        flash.now[:alret] = "スケジュールを更新できませんでした"
         render :edit
      end
     end
